@@ -1,0 +1,34 @@
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px;
+    row-gap: 24px;
+    list-style: none;
+
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+
+.gallery-image{
+    width: 360px;
+    height: 200px;
+
+    transition: 0.7s;
+}
+
+.gallery-image:hover {
+    width: 376px;
+    height: 208px;
+
+    transition: 0.7s;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.overlay{
+    background: rgba(46, 47, 66, 0.8);
+}
