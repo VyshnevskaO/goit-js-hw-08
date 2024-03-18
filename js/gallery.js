@@ -83,21 +83,37 @@ const markup = images
 listOfElements.innerHTML = markup;
 
 
-listOfElements.addEventListener("click", (event) => {
+listOfElements.addEventListener("click", handleClick);
+
+
+let instance;
+    
+function handleClick(event) {
     event.preventDefault();
     if (event.target.tagName !== "IMG") {
         return;
     } else { 
        
-        const instance = basicLightbox.create(`<img  src= "${event.target.dataset.source}
-           alt= "${event.target.alt}"
-     />`);
+        instance = basicLightbox.create(`<img  src= "${event.target.dataset.source}"
+           alt= "${event.target.alt}"/>`,
+    {
+            onShow: () => {
+             document.addEventListener("keydown", handleEsc);
+            },
+            onClose: () => {
+                document.removeEventListener("keydown", handleEsc);
+            }
+     });
     instance.show()
-
     }
-
+}
     
-    })
+function handleEsc(event) {
+    if (event.code === "Escape") {
+        // document.removeEventListener("keydown", handleEsc);
+        instance.close()
+    }
+}
 
 
 
